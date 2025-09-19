@@ -75,11 +75,11 @@
 1. Open the **[Live Demo](https://marko-738c2.firebaseapp.com/)**.  
 2. On the homepage, you’ll see:  
    - **PC Details**  
-   - **Equipment Logs** (choose this one)  
+   - **Equipment Logs (choose this)**  
    - **About**  
 3. Inside Equipment Logs:  
    - Calibration Log 
-   - **Maintenance Log (choose this option)**  
+   - **Maintenance Log (choose this)**  
    - Repair Log
    - Home  
 4. Select **Maintenance Log** → the form will appear.  
@@ -95,7 +95,6 @@
    - **Generate Report**  
    - **Clear Values**  
    - **Update Values**  
-
 
 ## 👨‍💻 Author  
 
