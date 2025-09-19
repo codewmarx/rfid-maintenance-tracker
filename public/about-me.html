@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            text-align: justify;
+            line-height: 1.5;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 50%;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .button-container {
+        display: flex;
+
+    }
+     button {
+        width: 50%;
+        box-sizing: border-box; 
+        margin-left: 3px;
+    } 
+    @media only screen and (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button-container button {
+        width: 90%;
+    }
+}
+
+button {
+        background-color: #3c0253;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        background-color: #5c0480;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Us</h1>
+        <img src="/img/me.jpg" alt="Marko Garado">
+        <h3>Marko Garado and Groupmates</h3>
+        <p>
+            Our RFID system, designed in completion for Sir Archie Ranido, 
+            is the brainchild of Marko Garado and his dedicated groupmates. 
+            This innovative system represents a pivotal advancement in 
+            equipment management, offering a seamless solution for logging 
+            and tracking valuable assets. At its core, our RFID system aims 
+            to revolutionize how organizations manage their equipment, 
+            ensuring streamlined operations and enhanced efficiency. 
+            By integrating cutting-edge RFID technology, we have created 
+            a system that not only simplifies equipment tracking but also
+             provides invaluable insights for better decision-making.
+              Our passion for innovation and commitment to excellence 
+              drive us to continually enhance our system, ensuring it 
+              remains at the forefront of asset management solutions.
+        </p>
+        <div class="button-container">
+            <button type="button"  onclick="window.location.href='interface.html'" id="button1">Go Back</button>
+        </div>
+    </div>
+</body>
+</html>

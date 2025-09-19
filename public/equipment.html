@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <title>Equipment Logs</title>
+</head>
+<body>
+    <!--EQUIPMENT LOGS-->
+    <div class="container" id="equipmentLogContainer">
+        <div class="decor"></div>
+        <h1>Welcome to our Equipment Log</h1>
+        <p>Please select an option:</p>
+        <div class="options">
+            <a href="#" class="option" id="calibration">Calibration Log</a>
+            <a href="#" class="option" onclick="showMaintenanceLogModal()" id="maintenance">Maintenance Log</a>
+            <a href="#" class="option" id="repair">Repair Log</a>
+            <a href="#" class="option" onclick="window.location.href='interface.html'">Home</a>
+        </div>
+    </div>
+
+    <!-- Modal for Maintenance Log Information -->
+<div class="modal-container2" id="maintenanceLogModal">
+    <div class="modal-content2">
+        <span class="close" onclick="closeMaintenanceLogModal()">&times;</span>
+        <h2>Fill Out the Maintenance Log Information:</h2>
+        <form id="maintenanceLogForm" class="separate">
+            <input type="text" id="rfid2" placeholder="RFID" required>
+            <input type="text" id="time" placeholder="Time" required>
+            <input type="date" id="date" placeholder="Date" required>
+            <input type="text" id="typeOfMaintenance" placeholder="Type of Maintenance" required>
+            <input type="text" id="conductedBy" placeholder="Conducted By" required>
+            <input type="date" id="nextDateOfMaintenance" placeholder="Next Date of Maintenance" required>
+            <input type="text" id="activity" placeholder="Activity" required>
+            <input type="text" id="unit" placeholder="Unit" required>
+            <input type="text" id="os-edition" placeholder="OS Edition" required>
+            <input type="text" id="installedRAM" placeholder="Installed RAM" required>
+            <input type="text" id="processor" placeholder="Processor" required>
+            <input type="text" id="system-type" placeholder="System Type" required>
+            <input type="text" id="location" placeholder="Location" required>
+            <input type="text" id="status" placeholder="Status" required>
+            <div class="button-container">
+                <button type="button" id="button1" onclick="generatePDF()">Generate Report</button>
+                <button type="button" id="button2" onclick="clearField()">Clear Fields</button>
+                <button type="button" id="button3" onclick="updateMaintenanceLog()">Update Values</button>
+            </div>            
+        </form>
+    </div>
+</div>
+
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+        .container {
+        max-width: 400px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .decor {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, #007bff 0%, #0056b3 100%);
+        transform: rotate(-45deg);
+        z-index: -1;
+    }
+    h1 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+    p {
+        color: #666;
+        margin-bottom: 30px;
+    }
+    .options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .option {
+        display: block;
+        width: 200px;
+        margin: 10px auto;
+        padding: 14px;
+        background-color: #3c0253;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+    .option:hover {
+        background-color: #5c0480;
+    }
+    /*para han maintenace log*/
+    .modal-container2 {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 30px;
+    }  
+    /* Modal content styles */
+    .modal-content2 {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 35%;
+        margin-top: -10px;
+        border-radius: 5px;
+        font-size: 10px;
+        box-sizing: border-box;
+    }
+    #maintenanceLogModal h2{
+    text-align: center;
+    }
+
+    #maintenanceLogModal ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    #maintenanceLogModal h2 {
+        font-size: 20px; 
+        color: #333; 
+    }
+
+    #maintenanceLogModal p {
+        margin: 0;
+        color: #666; 
+    }
+
+    #maintenanceLogModal .close:hover {
+        color: #333; 
+    }
+    .separate input[type=text] {
+        width: calc(100%); 
+        padding: 5px; 
+        margin: 2px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        font-size: 14px;
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .button-container {
+        display: flex;
+
+    }
+
+    .button-container button {
+        width: 50%;
+        box-sizing: border-box; 
+        margin-left: 3px;
+    }  
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    button {
+        background-color: #3c0253;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        background-color: #5c0480;
+    }
+    /* For screens smaller than 768px (phones) */
+@media only screen and (max-width: 768px) {
+    .modal-content2 {
+        width: 90%;
+        padding: 10px;
+        font-size: 14px;
+    }
+    .separate input[type=text] {
+        font-size: 12px;
+    }
+}
+
+/* For screens between 768px and 1024px (tablets) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .modal-content2 {
+        width: 70%;
+    }
+}
+
+/* For screens larger than 1024px (desktops) */
+@media only screen and (min-width: 1024px) {
+    .modal-content2 {
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button-container button {
+        width: 90%;
+    }
+}
+
+
+    </style>
+
+    <script src="javascript/maintenance.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>

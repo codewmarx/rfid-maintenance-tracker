@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Interface</title>
+    <link rel="stylesheet" href="">
+    <style>
+        body {
+           font-family: Arial, Helvetica, sans-serif; 
+           margin: 0;
+           padding: 0;
+           background-color: #f0f0f0;
+        }
+        .modal {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            width: 80%;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            color: rgb(76, 20, 94);
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .logo {
+            height: auto;
+            width: 100px;
+            background-color: #333;
+            
+        }
+        .header-text {
+            margin-top: 10px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .button {
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+            padding: 14px;
+            background-color: #3c0253;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #5c0480;
+        }  
+    </style>
+</head>
+<body>
+    <div class="modal show">
+        <div class="modal-content">
+            <div class="header">
+                <img src="img/itsologo.jpg" alt="Logo" class="logo">
+                <h1 class="header-text">Equipment Calibration -
+                    Maintenance -
+                    Repair Logs</h1>
+            </div>
+            <div class="button-container">
+                <a href="pcdetails.html" class="button">PC Details</a>
+                <a href="equipment.html" class="button">Equipment Logs</a>
+                <a href="about-me.html" class="button">About Us</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

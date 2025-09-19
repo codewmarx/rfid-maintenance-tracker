@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <title>PC Details</title>
+</head>
+<body>
+    <!--MAIN CONTAINER-->
+    <div class="main-container">
+        <div class="decor"></div>
+        <h1>Welcome to our RFID System</h1>
+        <button onclick="showRFIDModal()">Add PC Details</button>
+        <button onclick="showRFIDModal()">Update PC Details</button>
+        <button onclick="window.location.href='interface.html'">Home</button>
+    </div>
+
+    <!--INPUT FIELDS-->
+    <div class="modal-container" id="rfidModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Please enter the following details:</h2>
+            <form id="rfidForm">
+                <input type="text" id="rfid" placeholder="RFID" required>
+                <input type="text" id="labNumber" placeholder="Lab Number" required>
+                <input type="text" id="pcCode" placeholder="PC Code" required>
+                <input type="date" id="dateAcquired" class="input-field" placeholder="Date Acquired">
+                <button type="button" onclick="validateAndSubmit()">Send Data</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+    <!-- Confirmation Message -->
+    <div class="confirmation-message" id="confirmationMessage">
+        <span class="checkmark">&#10003;</span>
+        <p>Submitted Successfully!</p>
+    </div>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .main-container {
+            max-width: 300px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .decor {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, #007bff 0%, #0056b3 100%);
+            transform: rotate(-45deg);
+            z-index: -1;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        /*input fields*/
+        .modal-container {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 45px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+        }  
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }     
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+        }
+        input[type=text] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #3c0253;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #5c0480;
+        }
+        /* Confirmation Message Styles */
+        .confirmation-message {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(116, 45, 45, 0.2);
+        }
+        .confirmation-message p {
+            color: #f0f0f0; 
+        }
+        .checkmark {
+            font-size: 30px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+    </style>
+
+    <script>
+        //para han date (flatpickr)
+        flatpickr('#dateAcquired', {
+            dateFormat: "m/d/Y",
+        });
+
+        function closeModal() {
+            var modal = document.getElementById("rfidModal");
+            modal.style.display = "none";
+        }
+
+        function showRFIDModal() {
+            var modal = document.getElementById("rfidModal");
+        modal.style.display = "block";
+        }
+
+
+function submitForm() {
+    var rfid = document.getElementById("rfid").value;
+    var labNumber = document.getElementById("labNumber").value;
+    var pcCode = document.getElementById("pcCode").value;
+    var dateAcquired = document.getElementById("dateAcquired").value;
+
+    const data = {
+        rfid,
+        labNumber,
+        pcCode,
+        dateAcquired
+    };
+
+    fetch('https://script.google.com/macros/s/AKfycbxeC_g2N812lC1tbf7RHZav4Ffo60-GkeNzyXstCF0nWfD3B5KQeDz_Hfu8yxUOWdFr/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => {
+        console.log('Success:', response);
+        
+        // Show confirmation message
+        var confirmationMessage = document.getElementById('confirmationMessage');
+        confirmationMessage.style.display = 'block';
+
+        // Reset the form fields
+        document.getElementById("rfid").value = "";
+        document.getElementById("labNumber").value = "";
+        document.getElementById("pcCode").value = "";
+        document.getElementById("dateAcquired").value = "";
+
+        // Hide the confirmation message after 2 seconds
+        setTimeout(function() {
+            confirmationMessage.style.display = 'none';
+        }, 3000);
+
+        // Hide the modal for RFID details
+        var modal = document.getElementById("rfidModal");
+        modal.style.display = "none";
+
+        // Fetch and display the data
+        fetchDataAndDisplay();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+function fetchDataAndDisplay() {
+
+}
+
+//pag validate han input fields
+function validateAndSubmit() {
+    var rfid = document.getElementById("rfid").value;
+    var labNumber = document.getElementById("labNumber").value;
+    var pcCode = document.getElementById("pcCode").value;
+    var dateAcquired = document.getElementById("dateAcquired").value;
+
+    if (rfid === '' || labNumber === '' || pcCode === '' || dateAcquired === '') {
+        alert('Please fill out all required fields.');
+        return;
+    }
+
+    submitForm();
+}
+
+
+    // pag fetch han input fields
+    var rfidInput = document.getElementById("rfid");
+    var labNumberInput = document.getElementById('labNumber');
+    var pcCodeInput = document.getElementById('pcCode');
+    var dateAcquiredInput = document.getElementById('dateAcquired');
+    
+    rfidInput.addEventListener("change", function() {
+        var rfidValue = rfidInput.value;
+        console.log("RFID value:", rfidValue);
+    
+        fetch('https://script.google.com/macros/s/AKfycbzIQMmPTe9wjMXUom_8sIAAKqcA-KJZuL4S98c9g8--v0WXJEiZeyMipwKXhuvpcD-v/exec?rfid=' + rfidValue)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Response data:", data); // pag log han response data
+                var rowData = null; // Initialize rowData to null
+    
+                // Find the matching RFID in the data array
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i]['RFID ID'] === parseInt(rfidValue)) {
+                        rowData = data[i]; // Set rowData to the matching data object
+                        break; 
+                    }
+                }
+                if (rowData) {
+                    labNumberInput.value = rowData['LAB_NUM'];
+                    pcCodeInput.value = rowData['PC CODE'];
+                    //pag format han date
+                    var dateAcquired = new Date(rowData['DATE ACQUIRED']);
+                    dateAcquiredInput.value = dateAcquired.getFullYear() + '-' + (dateAcquired.getMonth() + 1).toString().padStart(2, '0') + '-' + dateAcquired.getDate().toString().padStart(2, '0');
+
+                } else {
+                    console.error('No data found for RFID:', rfidValue);
+                    alert('Error: No RFID Number was found! Please try again.');
+                    rfidInput.value = '';
+                    labNumberInput.value = '';
+                    pcCodeInput.value = '';
+                    dateAcquiredInput.value = '';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                labNumberInput.value = '';
+                pcCodeInput.value = '';
+                dateAcquiredInput.value = '';
+            });
+    });
+
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        const formattedDate = date.toLocaleDateString('en-PH', options);
+        return formattedDate;
+    }
+    </script>
+</html>

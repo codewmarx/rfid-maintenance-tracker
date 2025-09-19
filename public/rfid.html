@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="web.css" class="rel">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<title>RFID Equipment Log System</title>
+
+</head>
+<body>
+    <!--MAIN CONTAINER-->
+    <div class="main-container">
+        <div class="decor"></div>
+        <h1>Welcome to our RFID System</h1>
+        <button onclick="showRFIDModal()">Add PC Details</button>
+        <button onclick="showRFIDModal()">Update PC Details</button>
+    </div>
+
+    <!--EQUIPMENT LOGS-->
+    <div class="container" id="equipmentLogContainer">
+        <div class="decor"></div>
+        <h1>Welcome to our Equipment Log</h1>
+        <p>Please select an option:</p>
+        <div class="options">
+            <a href="#" class="option" id="calibration">Calibration Log</a>
+            <a href="#" class="option" onclick="showMaintenanceLogModal()" id="maintenance">Maintenance Log</a>
+            <a href="#" class="option" id="repair">Repair Log</a>
+        </div>
+    </div>
+    
+    <!--INPUT FIELDS-->
+    <div class="modal-container" id="rfidModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Please enter the following details:</h2>
+            <form id="rfidForm">
+                <input type="text" id="rfid" placeholder="RFID" required>
+                <input type="text" id="labNumber" placeholder="Lab Number" required>
+                <input type="text" id="pcCode" placeholder="PC Code" required>
+                <input type="date" id="dateAcquired" class="input-field" placeholder="Date Acquired">
+                <button type="button" onclick="validateAndSubmit()">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirmation Message -->
+    <div class="confirmation-message" id="confirmationMessage">
+        <span class="checkmark">&#10003;</span>
+        <p>Submitted Successfully!</p>
+    </div>
+
+    <!-- Modal for Maintenance Log Information -->
+<div class="modal-container2" id="maintenanceLogModal">
+    <div class="modal-content2">
+        <span class="close" onclick="closeMaintenanceLogModal()">&times;</span>
+        <h2>Fill Out the Maintenance Log Information:</h2>
+        <form id="maintenanceLogForm" class="separate">
+            <input type="text" id="rfid2" placeholder="RFID" required>
+            <input type="text" id="time" placeholder="Time" required>
+            <input type="date" id="date" placeholder="Date" required>
+            <input type="text" id="typeOfMaintenance" placeholder="Type of Maintenance" required>
+            <input type="text" id="conductedBy" placeholder="Conducted By" required>
+            <input type="date" id="nextDateOfMaintenance" placeholder="Next Date of Maintenance" required>
+            <input type="text" id="activity" placeholder="Activity" required>
+            <input type="text" id="unit" placeholder="Unit" required>
+            <input type="text" id="os-edition" placeholder="OS Edition" required>
+            <input type="text" id="installedRAM" placeholder="Installed RAM" required>
+            <input type="text" id="processor" placeholder="Processor" required>
+            <input type="text" id="system-type" placeholder="System Type" required>
+            <input type="text" id="location" placeholder="Location" required>
+            <input type="text" id="status" placeholder="Status" required>
+            <div class="button-container">
+                <button type="button" id="button1" onclick="generatePDF()">Generate Report</button>
+                <button type="button" id="button2" onclick="clearField()">Clear Fields</button>
+            </div>            
+        </form>
+    </div>
+</div>
+
+
+<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+	</script>
+	<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+	</script>
+    <script src="javascript/app.js"></script>
+    <script src="fetch.js"></script>
+    <script src="javascript/maintenance.js"></script>
+
+</body>
+</html>
+
+
+
+
+
