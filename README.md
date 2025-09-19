@@ -16,7 +16,14 @@
   efficient and automated way to record, update, and monitor equipment maintenance activities.
 </p>
 
+## 📥 Clone this Repository  
 
+To clone and run this project locally:  
+
+```bash
+git clone https://github.com/codewmarx/rfid-maintenance-tracker.git
+cd rfid-maintenance-tracker
+```
 ## 📸 Preview
 
 ![Homepage](img/homepage.jpg)  
