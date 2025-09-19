@@ -8,8 +8,31 @@
   <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black"/>
 </p>
 
-This project was developed as part of my **2nd Year Information Technology** course requirement.  
-It is a web-based system for managing **Computer Equipment Calibration, Maintenance, and Repair Logs** using **RFID cards**, integrated with **Google Sheets & Google Apps Script** as the backend database.  
+<p align="center">
+  This project was developed as part of my <b>2nd Year Information Technology</b> course requirement for the Department of College of Computer Studies.<br><br>
+  It is a web-based system for managing <b>Computer Equipment Calibration, Maintenance, and Repair Logs</b><br>
+  using <b>RFID cards</b>, integrated with <b>Google Sheets & Google Apps Script</b> as the backend database.<br><br>
+  By leveraging RFID technology, this system reduces manual data entry and minimizes errors — providing a more 
+  efficient and automated way to record, update, and monitor equipment maintenance activities.
+</p>
+
+
+## 📸 Preview
+
+![Homepage](img/homepage.jpg)  
+*- On Homepage, please click the "Equipment Logs"*
+
+![Equipment Logs](/img/equipment-logs.jpg)  
+*- Under Equipement Logs, choose "Maintenance Logs" and the form will appear*
+
+![Before](img/before-field.jpg)  
+*- Manually enter RFID code, example: **870195***
+
+![After](img/after-field.jpg)  
+*- Click outside the input field - data are fetched automatically from **Google Sheets***
+
+![Repor](img/report-logs.jpg)  
+*- Generate report based on the fetched data and/or updated values*
 
 
 ## 🚀 Features  
@@ -44,7 +67,7 @@ It is a web-based system for managing **Computer Equipment Calibration, Maintena
    - STATUS
 
 3. Go to **Extensions → App Script**.  
-4. Copy the contents of `code.gs` and `test.gs` from this repo into your project.  
+4. Copy the contents of `code.gs` and `test.gs` from this repository under the /scripts folder into your project.  
 5. Deploy as a **Web App** → set access to *“Anyone with the link”*.  
 
 ## 🖥️ Demo Walkthrough  
@@ -52,13 +75,13 @@ It is a web-based system for managing **Computer Equipment Calibration, Maintena
 1. Open the **[Live Demo](https://marko-738c2.firebaseapp.com/)**.  
 2. On the homepage, you’ll see:  
    - **PC Details**  
-   - **Equipment Logs ✅** (choose this one)  
+   - **Equipment Logs (choose this)**  
    - **About**  
 3. Inside Equipment Logs:  
-   - ❌ Calibration Log 
-   - ✅ **Maintenance Log (choose this option)**  
-   - ❌ Repair Log
-   - 🏠 Home  
+   - Calibration Log 
+   - **Maintenance Log (choose this)**  
+   - Repair Log
+   - Home  
 4. Select **Maintenance Log** → the form will appear.  
 5. Enter one of the sample RFID numbers:  
    - 870195
@@ -72,14 +95,6 @@ It is a web-based system for managing **Computer Equipment Calibration, Maintena
    - **Generate Report**  
    - **Clear Values**  
    - **Update Values**  
-
-
-## 📸 Preview  
-
-- Homepage (3 buttons)  
-- Equipment Logs (4 options)  
-- Maintenance Log form (before & after RFID fetch)  
-
 
 ## 👨‍💻 Author  
 
