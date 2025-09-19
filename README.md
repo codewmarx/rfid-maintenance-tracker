@@ -12,8 +12,6 @@
   This project was developed as part of my <b>2nd Year Information Technology</b> course requirement for the Department of College of Computer Studies.<br><br>
   It is a web-based system for managing <b>Computer Equipment Calibration, Maintenance, and Repair Logs</b><br>
   using <b>RFID cards</b>, integrated with <b>Google Sheets & Google Apps Script</b> as the backend database.<br><br>
-  By leveraging RFID technology, this system reduces manual data entry and minimizes errors — providing a more 
-  efficient and automated way to record, update, and monitor equipment maintenance activities.
 </p>
 
 ## 📥 Clone this Repository  
@@ -48,8 +46,6 @@ cd rfid-maintenance-tracker
 - ⚡ Auto-populates form fields when scanning or manually entering RFID  
 - 📝 Options: **Generate Report**, **Clear Values**, **Update Values**  
 - 📱 Simple & responsive UI with navigation  
-
-## 🛠️ Setup Instructions  
 
 ### Requirements  
 - Google Account (for Google Sheets + Apps Script)  
